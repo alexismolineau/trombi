@@ -12,11 +12,9 @@
     <h1>Hello {{ controller_name }}! ✅</h1>
 
     This friendly message is coming from:
-    {% for student in students %}
-        <p>{{student.prenom}}</p>
-        <p>{{student.nom}}</p>
-        <p><a href="{{path('students', {'id': student.id}) }}">Voir plus</a></p>
-        
-    {% endfor %}
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Users/alexis/Projets/trombi/trombi/src/Controller/StudentsListController.php'|file_link(0) }}">src/Controller/StudentsListController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Users/alexis/Projets/trombi/trombi/templates/students_list/index.html.twig'|file_link(0) }}">templates/students_list/index.html.twig</a></code></li>
+    </ul>
 </div>
 {% endblock %}
