@@ -1,0 +1,199 @@
+body {
+    font-family: Roboto;
+    color: #fff;
+    text-align: center;
+    color: #666666
+}
+
+h1,
+h2{
+    padding: 1rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:link{
+    color: #fff;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+/* card component*/
+.card {
+    font-size: 1.4rem;
+    position: relative;
+    background-color: #fff;
+    padding: 0.8em;
+    box-shadow: 0.2em 0.2em .5em 0px #9a9292;
+    border-radius: 0.3em;
+    margin-bottom: 2rem;
+}
+
+.card > h2 {
+    color: #fd7e37;
+}
+
+
+.button {
+    font-size: 1.8rem;
+    position: absolute;
+    top: 40%;
+    left: 22%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #fff;
+    background-color: #fd7e37;
+    padding: 0.5em 1em;
+    border-radius: 1.5em;
+    text-decoration: none;
+    opacity: 0;
+}
+
+.card:hover > .button{
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card:hover > img{
+    filter: blur(1px);
+    transition: blur 0.5s ease-in-out;
+}
+
+/* overiding blur animation on profile page */
+.card-profile:hover > img {
+    filter: blur(0px);
+}
+
+/*header*/
+.main-header {
+    background-color: #fd7e37;
+    color: #fff;
+    padding: 1em;
+    margin-bottom: 3em;
+}
+
+
+/*content*/
+.main-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    column-gap: 1em;
+    row-gap: 2em;
+    margin-bottom: 3em;
+}
+
+.profile-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 2fr));
+    grid-gap: 2rem;
+    margin-bottom: 3em;
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+
+.breadcrumb{
+    text-align: left;
+    margin-top: -2em;
+    margin-bottom: 1em;
+    padding-left: 1.5rem;
+}
+
+.breadcrumb > a{
+    color: grey;
+}
+
+.background,
+.entreprise,
+.missions,
+.portrait{
+    padding-top: 0;
+}
+
+.background > p{
+    font-style: italic;
+}
+
+.portrait {
+    color: #666666;
+    margin-bottom: 3rem;
+}
+
+
+.portrait-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.portrait-list:nth-child(2n) {
+    background-color:  #fd7e37;
+    color: #fff;
+}
+
+.portrait-list-label {
+    font-weight: 700;
+}
+
+
+/* footer */
+footer {
+    padding: 1em;
+    background-color: #fd7e37;
+    color: #fff;
+}
+
+.main-footer{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.8rem;
+    text-align: left;
+}
+
+.footer-links {
+    margin-left: 1.5em;
+    margin-right: .5em;
+    border-right: 1px solid #fff;
+}
+
+.courses-list{
+    margin-left: .5em;
+    margin-right: 1.5em;
+    border-right: 1px solid #fff;
+}
+
+.link-list-items, .courses-list-items {
+    margin-bottom: 0.5em;
+}
+
+.link-list-items > a, .courses-list-items > a {
+    margin-left: 0.5em;
+}
+
+.icon{
+    display: inline;
+    max-width: 1em;
+}

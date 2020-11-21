@@ -25,12 +25,14 @@ class StudentsListController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="students")
+     * @Route("/student/{id}", name="student")
      */
-    public function list(int $id): Response
+    public function student(int $id): Response
     {
+        $student = $this->getDoctrine()->getRepository(Student::class)->findOneBy(array('id' => $id));
+
         return $this->render('students_list/list.html.twig', [
-            'students' => 'test',
+            'student' => $student,
         ]);
     }
 }

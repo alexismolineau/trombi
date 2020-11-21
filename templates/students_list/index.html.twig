@@ -1,22 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StudentsListController!{% endblock %}
+{% block title %}Trombinoscope DWWM-2{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <main class="main-content container">
+        {% for student in students %}
+        <div class="card-container">
+            <div class="card">
+                <img src="{{ asset('assets/img/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{ student.nom }}">
+                <h2>{{student.prenom}} {{student.nom}}</h2>
+                <a href="{{ path("student", {'id': student.id}) }}" class="button">En savoir +</a>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
 
-    This friendly message is coming from:
-    {% for student in students %}
-        <p>{{student.prenom}}</p>
-        <p>{{student.nom}}</p>
-        <p><a href="{{path('students', {'id': student.id}) }}">Voir plus</a></p>
-        
-    {% endfor %}
-</div>
 {% endblock %}

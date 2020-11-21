@@ -2,11 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Trombinoscope DWWM-2{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('assets/css/base.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        {% endblock %}
     </head>
     <body>
+
+    <header class="main-header">
+        <h1>Les trombines de DWWM-2</h1>
+    </header>
+
         {% block body %}{% endblock %}
+
+    <footer class="main-footer">
+        <div class="footer-links container">
+            <h2>Liens utiles</h2>
+            <ul class="link-list">
+                <li class="link-list-items"><img src="{{ asset('assets/img/slack.svg') }}" alt="logo slack" class="icon"><a href="https://cefim-school.slack.com/archives/G01EWSK0YAW" target="_blank">Slack</a></li>
+                <li class="link-list-items"><img src="{{ asset('assets/img/google-drive.svg') }}" alt="logo google drive" class="icon"><a href="https://drive.google.com/drive/folders/1Uq3DNyZVuorL-LwRdcjqpBAbqtZosbhB" target="_blank">Présentations</a></li>
+            </ul>
+        </div>
+        <div class="courses-list container"> 
+            <h2>Cours</h2>
+            <ul class="courses-link">
+                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=589" target="_blank">Welcome Pack</a></li>
+                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=590" target="_blank">Outils</a></li>
+                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=597" target="_blank">Autonomie</a></li>
+                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=608" target="_blank">HTML/CSS</a></li>
+            </ul>
+        </div>
+    </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
