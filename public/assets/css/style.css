@@ -10,6 +10,41 @@ h2{
     padding: 1rem;
 }
 
+@media(max-width: 600px)
+{
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .main-content{
+        grid-template-columns: 1fr!important;
+    }
+
+    .profile-content{
+        grid-template-columns: 1fr!important;
+    }
+
+
+    .main-footer{
+        font-size: 1.2rem!important;
+        flex-direction: column;
+    }
+
+    .footer-links{
+        margin-left: 0.5rem!important;
+        border-right: 0!important;
+    }
+
+    .courses-list{
+        border-right: 0!important;
+    }
+}
+
+
 a{
     text-decoration: none;
 }
@@ -36,6 +71,11 @@ a:visited {
 
 
 /* card component*/
+
+.home-card{
+    max-width: 24rem;
+}
+
 .card {
     font-size: 1.4rem;
     position: relative;
@@ -52,6 +92,8 @@ a:visited {
 
 
 .button {
+    display: flex;
+    align-items: center;
     font-size: 1.8rem;
     position: absolute;
     top: 0;
@@ -59,7 +101,7 @@ a:visited {
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 50%;
+    max-width: 70%;
     max-height: 6rem;
     text-align: center;
     font-weight: 700;
@@ -69,7 +111,10 @@ a:visited {
     border-radius: 1.5em;
     text-decoration: none;
     opacity: 0;
-    align-self: center;
+}
+
+.button > span {
+    margin: auto;
 }
 
 .card:hover > .button{
