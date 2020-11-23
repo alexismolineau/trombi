@@ -14,27 +14,6 @@
                 <a href="{{ path("student", {'id': student.id}) }}" class="button"><span>En savoir +</span></a>
             </div>
         </div>
-        <div class="card-container home-card">
-            <div class="card">
-                <img src="{{ asset('assets/img/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{ student.nom }}">
-                <h2><a href="{{ path("student", {'id': student.id}) }}">{{student.prenom}} {{student.nom}}</a></h2>
-                <a href="{{ path("student", {'id': student.id}) }}" class="button"><span>En savoir +</span></a>
-            </div>
-        </div>
-        <div class="card-container home-card">
-            <div class="card">
-                <img src="{{ asset('assets/img/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{ student.nom }}">
-                <h2><a href="{{ path("student", {'id': student.id}) }}">{{student.prenom}} {{student.nom}}</a></h2>
-                <a href="{{ path("student", {'id': student.id}) }}" class="button"><span>En savoir +</span></a>
-            </div>
-        </div>
-        <div class="card-container home-card">
-            <div class="card">
-                <img src="{{ asset('assets/img/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{ student.nom }}">
-                <h2><a href="{{ path("student", {'id': student.id}) }}">{{student.prenom}} {{student.nom}}</a></h2>
-                <a href="{{ path("student", {'id': student.id}) }}" class="button"><span>En savoir +</span></a>
-            </div>
-        </div>
         {% endfor %}
     </main>
 
