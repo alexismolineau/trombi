@@ -19,6 +19,8 @@ AuthType Basic
 AuthUserFile "/Users/alexis/Projets/trombi/trombi/public/.htpasswd"
 Require valid-user
 
+SetEnv APP_ENV dev
+
 <IfModule mod_negotiation.c>
     Options -MultiViews
 </IfModule>

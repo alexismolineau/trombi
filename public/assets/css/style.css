@@ -46,7 +46,7 @@ a:visited {
     margin-bottom: 2rem;
 }
 
-.card > h2 {
+.card > h2, .card > h2 > a{
     color: #fd7e37;
 }
 
