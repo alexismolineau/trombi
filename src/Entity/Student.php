@@ -184,6 +184,9 @@ class Student
 
     public function setImgSrc(?string $imgSrc): self
     {
+        if($imgSrc === ''){
+            $this->imgSrc = 'profile.png';
+        }
         $this->imgSrc = $imgSrc;
 
         return $this;
