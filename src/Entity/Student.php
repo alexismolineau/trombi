@@ -119,6 +119,7 @@ class Student
      */
     private $promotions;
 
+
     public function __construct()
     {
         $this->promotions = new ArrayCollection();
@@ -389,4 +390,5 @@ class Student
 
         return $this;
     }
+
 }

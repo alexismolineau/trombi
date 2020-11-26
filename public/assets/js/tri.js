@@ -4,16 +4,22 @@ let content = document.querySelector('.main-content');
 function sortByName(){
     const cardsArray = Array.from(cards);
     cardsArray.sort(function(a, b){
-        return a.childNodes[1].childNodes[1].alt.split(' ')[1] == b.childNodes[1].childNodes[1].alt.split(' ')[1] ? 0 : 
-        (a.childNodes[1].childNodes[1].alt.split(' ')[1] > b.childNodes[1].childNodes[1].alt.split(' ')[1]);
+        if(a.childNodes[1].childNodes[1].alt.split(' ')[1] === b.childNodes[1].childNodes[1].alt.split(' ')[1]){
+            return 0;
+        }
+        if(a.childNodes[1].childNodes[1].alt.split(' ')[1] < b.childNodes[1].childNodes[1].alt.split(' ')[1]){
+            return 1;
+        }
+        if(a.childNodes[1].childNodes[1].alt.split(' ')[1] > b.childNodes[1].childNodes[1].alt.split(' ')[1]){
+            return -1;
+        }
     });
-
     return cardsArray;
 }
 
 function triAZ(){
     cardsArray = sortByName();
-
+    console.log(cardsArray);
     for(let i = 0; i < cardsArray.length; i++){
         content.appendChild(cardsArray[i]);
     }
