@@ -102,6 +102,16 @@ class Student
      */
     private $company;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $student;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $teacher;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -307,6 +317,30 @@ class Student
     public function setCompany(string $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    public function getStudent(): ?bool
+    {
+        return $this->student;
+    }
+
+    public function setStudent(bool $student): self
+    {
+        $this->student = $student;
+
+        return $this;
+    }
+
+    public function getTeacher(): ?bool
+    {
+        return $this->teacher;
+    }
+
+    public function setTeacher(bool $teacher): self
+    {
+        $this->teacher = $teacher;
 
         return $this;
     }
