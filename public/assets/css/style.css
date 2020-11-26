@@ -146,6 +146,17 @@ a:visited {
     margin-bottom: 3em;
 }
 
+/*filter bar*/
+
+.top-filter{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.filtre > img{
+    width: 2rem;
+}
 
 /*content*/
 .main-content{

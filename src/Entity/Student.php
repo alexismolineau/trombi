@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StudentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -112,6 +114,16 @@ class Student
      */
     private $teacher;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Promotion::class, mappedBy="Student")
+     */
+    private $promotions;
+
+    public function __construct()
+    {
+        $this->promotions = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -184,10 +196,13 @@ class Student
 
     public function setImgSrc(?string $imgSrc): self
     {
+
         if($imgSrc === ''){
             $this->imgSrc = 'profile.png';
         }
-        $this->imgSrc = $imgSrc;
+        else {
+            $this->imgSrc = $imgSrc;
+        }
 
         return $this;
     }
@@ -344,6 +359,33 @@ class Student
     public function setTeacher(bool $teacher): self
     {
         $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Promotion[]
+     */
+    public function getPromotions(): Collection
+    {
+        return $this->promotions;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotions->contains($promotion)) {
+            $this->promotions[] = $promotion;
+            $promotion->addStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotions->removeElement($promotion)) {
+            $promotion->removeStudent($this);
+        }
 
         return $this;
     }

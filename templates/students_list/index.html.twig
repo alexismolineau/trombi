@@ -3,13 +3,24 @@
 {% block title %}Trombinoscope DWWM-2{% endblock %}
 
 {% block body %}
-    
-
+    <div class="container top-filter">
+        <div class="search-container">
+        ceci est une barre de recherche
+        </div>
+        <div class="filter-container">
+            <button class="filtre" onclick="triAZ()">
+                <img src="{{ asset('assets/img/sortAZ.svg') }}" alt="tri par ordre alphabetique">
+            </button>
+            <button class="filtre" onclick="triZA()">
+                <img src="{{ asset('assets/img/sortZA.svg') }}" alt="tri par ordre anti-alphabetique">
+            </button>
+        </div>
+    </div>
     <main class="main-content container">
         {% for student in students %}
         <div class="card-container home-card">
             <div class="card">
-                <img src="{{ asset('assets/img/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{ student.nom }}">
+                <img src="{{ asset('assets/img/students/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{ student.nom }}">
                 <h2><a href="{{ path("student", {'id': student.id}) }}">{{student.prenom}} {{student.nom}}</a></h2>
                 <a href="{{ path("student", {'id': student.id}) }}" class="button"><span>En savoir +</span></a>
             </div>
@@ -17,4 +28,8 @@
         {% endfor %}
     </main>
 
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/tri.js') }}"></script>
 {% endblock %}
