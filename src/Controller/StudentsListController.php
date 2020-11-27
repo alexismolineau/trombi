@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Student;
+use App\Entity\Promotion;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,11 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class StudentsListController extends AbstractController
 {
     /**
-     * @Route("/", name="students_list")
+     * @Route("/students/{id}", name="students_list")
      */
-    public function index(): Response
+    public function index(int $id): Response
     {
-        $students = $this->getDoctrine()->getRepository(Student::class)->findAll();
+
+        $promotion = $this->getDoctrine()->getRepository(Promotion::class)->findOneBy(array('id' => $id));
+        $students = $promotion->getStudent();
         return $this->render('students_list/index.html.twig', [
             'students' => $students,
         ]);

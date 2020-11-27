@@ -45,9 +45,9 @@ class Promotion
     private $slackLink;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
-    private $googleDriveLink;
+    private $googleDriveLink = [];
 
     /**
      * @ORM\ManyToMany(targetEntity=Student::class, inversedBy="promotions")
@@ -124,12 +124,12 @@ class Promotion
         return $this;
     }
 
-    public function getGoogleDriveLink(): ?string
+    public function getGoogleDriveLink(): ?array
     {
         return $this->googleDriveLink;
     }
 
-    public function setGoogleDriveLink(?string $googleDriveLink): self
+    public function setGoogleDriveLink(?array $googleDriveLink): self
     {
         $this->googleDriveLink = $googleDriveLink;
 
