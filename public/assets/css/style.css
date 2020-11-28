@@ -248,8 +248,14 @@ footer {
 .main-footer{
     display: flex;
     justify-content: flex-start;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-align: left;
+}
+
+.foooter-container {
+    max-width: 1200px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
 }
 
 .footer-links {
@@ -257,12 +263,16 @@ footer {
     padding: 0 1.5em;
 }
 
+.footer-links > h2 {
+    padding-top : 0;
+}
 
-.link-list-items, .courses-list-items {
+
+.link-list-items {
     margin-bottom: 0.5em;
 }
 
-.link-list-items > a, .courses-list-items > a {
+.link-list-items > a {
     margin-left: 0.5em;
 }
 

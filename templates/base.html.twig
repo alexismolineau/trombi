@@ -20,36 +20,37 @@
         {% block body %}{% endblock %}
 
     <footer class="main-footer">
-        <div class="footer-links">
-            <h2>Liens utiles</h2>
-            {% block linksfooter %}
-            <ul class="link-list">
-                <li class="link-list-items"><img src="{{ asset('assets/img/slack.svg') }}" alt="logo slack" class="icon"><a href="https://cefim-school.slack.com/archives/G01EWSK0YAW" target="_blank">Slack</a></li>
-                <li class="link-list-items"><img src="{{ asset('assets/img/google-drive.svg') }}" alt="logo google drive" class="icon"><a href="https://drive.google.com/drive/folders/1Uq3DNyZVuorL-LwRdcjqpBAbqtZosbhB" target="_blank">Présentations</a></li>
-            </ul>
-            {% endblock %}
-        </div>
-        <div class="footer-links"> 
-            <h2>Cours</h2>
-            {% block coursesfooter %}
-            <ul class="courses-link">
-                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=589" target="_blank">Welcome Pack</a></li>
-                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=590" target="_blank">Outils</a></li>
-                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=597" target="_blank">Autonomie</a></li>
-                <li class="courses-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/course/view.php?id=608" target="_blank">HTML/CSS</a></li>
-            </ul>
-            {% endblock %}
-        </div>
-        <div class="footer-links"> 
-            <h2>Cours</h2>
-            {% block googlefooter %}
-            <ul class="link-list">
-                <li class="link-list-items"><img src="{{ asset('assets/img/google-drive.svg') }}" alt="logo google drive" class="icon">
-                    <a href="https://drive.google.com/drive/folders/1Uq3DNyZVuorL-LwRdcjqpBAbqtZosbhB" target="_blank">Présentations</a>
-                </li>
-            </ul>
-            {% endblock %}
-        </div>
+        <div class="foooter-container main-footer">
+            <div class="footer-links">
+                <h2>Liens utiles</h2>
+
+                <ul class="link-list">
+                    {% block linksfooter %}
+                        <li class="link-list-items"><img src="{{ asset('assets/img/slack.svg') }}" alt="logo slack" class="icon"><a href="https://cefim-school.slack.com/archives/G01EWSK0YAW" target="_blank">Slack</a></li>
+                        <li class="link-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://www.cefim.eu/ target="_blank">CEFIM</a></li>
+                    {% endblock %}
+                </ul>
+
+            </div>
+            <div class="footer-links"> 
+                <h2>Cours</h2>
+                <ul class="link-list">
+                {% block coursesfooter %}
+                    <li class="link-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="https://campus.cefim.eu/" target="_blank">Campus CEFIM</a></li>
+                {% endblock %}
+                </ul>
+            </div>
+            <div class="footer-links"> 
+                <h2>Google Drive</h2>
+                <ul class="link-list">
+                    {% block googlefooter %}
+                    <li class="link-list-items">
+                        <span>Aucun lien à afficher</span>
+                    </li>
+                    {% endblock %}
+                </ul>
+            </div>
+        <div>
     </footer>
         {% block javascripts %}{% endblock %}
     </body>

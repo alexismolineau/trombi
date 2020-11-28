@@ -19,9 +19,11 @@ class StudentsListController extends AbstractController
 
         $promotion = $this->getDoctrine()->getRepository(Promotion::class)->findOneBy(array('id' => $promotion));
         $students = $promotion->getStudent();
+        $links = $promotion->getLinks();
         return $this->render('students_list/index.html.twig', [
             'students' => $students,
             'promotion' => $promotion,
+            'links' => $links,
         ]);
     }
 
@@ -32,10 +34,11 @@ class StudentsListController extends AbstractController
     {
         $student = $this->getDoctrine()->getRepository(Student::class)->findOneBy(array('id' => $id));
         $promotion = $this->getDoctrine()->getRepository(Promotion::class)->findOneBy(array('id' =>$promotion));
-
+        $links = $promotion->getLinks();
         return $this->render('students_list/list.html.twig', [
             'student' => $student,
             'promotion' => $promotion,
+            'links' => $links,
         ]);
     }
 }

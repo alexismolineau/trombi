@@ -89,3 +89,38 @@
 
 
 {% endblock %}
+
+{% block linksfooter %}
+    {% for link in links %}
+        {% if (link.type is same as ("slack")) or (link.type is same as ("other")) %}
+            <li class="link-list-items">
+                <img src="
+                    {% if link.type is same as ("slack") %}
+                        {{ asset('assets/img/slack.svg') }}
+                    {% else %}
+                        {{ asset('assets/img/cefim.png') }}
+                    {% endif %}
+                " alt="logo slack" class="icon">
+                <a href="{{ link.href }}" target="_blank">{{ link.name }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block coursesfooter %}
+    {% for link in links %}
+        {% if link.type is same as ("cours") %}
+            <li class="link-list-items"><img src="{{ asset('assets/img/cefim.png') }}" alt="logo cefim" class="icon"><a href="{{link.href}}" target="_blank">{{link.name}}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block googlefooter %}
+    {% for link in links %}
+        {% if link.type is same as ("googleDrive") %}
+            <li class="link-list-items"><img src="{{ asset('assets/img/google-drive.svg') }}" alt="logo google drive" class="icon"><a href="{{link.href}}" target="_blank">{{link.name}}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
