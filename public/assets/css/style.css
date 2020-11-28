@@ -167,6 +167,19 @@ a:visited {
     margin-bottom: 3em;
 }
 
+.promotion-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 2em;
+}
+
+.promotion-card{
+    display: flex;
+    padding: 0.8em;
+    box-shadow: 0.2em 0.2em .5em 0px #9a9292;
+    border-radius: 0.3em;
+}
+
 .profile-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40rem, 2fr));

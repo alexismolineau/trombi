@@ -35,21 +35,6 @@ class Promotion
     private $groupPicture;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $courseLinks = [];
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $slackLink;
-
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $googleDriveLink = [];
-
-    /**
      * @ORM\ManyToMany(targetEntity=Student::class, inversedBy="promotions")
      */
     private $Student;
@@ -102,42 +87,6 @@ class Promotion
     public function setGroupPicture(?string $groupPicture): self
     {
         $this->groupPicture = $groupPicture;
-
-        return $this;
-    }
-
-    public function getCourseLinks(): ?array
-    {
-        return $this->courseLinks;
-    }
-
-    public function setCourseLinks(?array $courseLinks): self
-    {
-        $this->courseLinks = $courseLinks;
-
-        return $this;
-    }
-
-    public function getSlackLink(): ?string
-    {
-        return $this->slackLink;
-    }
-
-    public function setSlackLink(?string $slackLink): self
-    {
-        $this->slackLink = $slackLink;
-
-        return $this;
-    }
-
-    public function getGoogleDriveLink(): ?array
-    {
-        return $this->googleDriveLink;
-    }
-
-    public function setGoogleDriveLink(?array $googleDriveLink): self
-    {
-        $this->googleDriveLink = $googleDriveLink;
 
         return $this;
     }
