@@ -177,6 +177,7 @@ a:visited {
 }
 
 .promotion-card{
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
@@ -200,6 +201,20 @@ a:visited {
 .promotion-card-content > div > h2 {
     color: #fd7e37;
     padding-top: 0;
+}
+
+.year{
+    position: absolute;
+    padding: 0.5em;
+    color: #fff;
+    background-color: #fd7e37;
+    top: 0;
+    left : 0;
+    border-radius: 0 0 20px 0;
+}
+
+.promotion-year {
+    font-weight: bold;
 }
 
 .promotion-btn {

@@ -15,11 +15,11 @@
         ceci est une barre de recherche
         </div>
         <div class="filter-container">
-            <button class="filtre" onclick="triAZ()">
-                <img src="{{ asset('assets/img/sortAZ.svg') }}" alt="tri par ordre alphabetique">
+            <button class="filtre" onclick="tri19()">
+                <img src="{{ asset('assets/img/sort19.svg') }}" alt="tri par ordre alphabetique">
             </button>
-            <button class="filtre" onclick="triZA()">
-                <img src="{{ asset('assets/img/sortZA.svg') }}" alt="tri par ordre anti-alphabetique">
+            <button class="filtre" onclick="tri91()">
+                <img src="{{ asset('assets/img/sort91.svg') }}" alt="tri par ordre anti-alphabetique">
             </button>
         </div>
     </div>
@@ -31,6 +31,7 @@
                         <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
                             <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
                         </a>
+                        <span class="year">Année: <span class="promotion-year">{{promotion.year}}</span></span>
                     <div class="promotion-card-content">
                         <div>
                             <h2>{{ promotion.nom }}</h2>
@@ -45,6 +46,7 @@
                         <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
                             <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
                         </a>
+                        <span class="year">Année: <span class="promotion-year">2017</span></span>
                     <div class="promotion-card-content">
                         <div>
                             <h2>{{ promotion.nom }}</h2>
@@ -59,6 +61,7 @@
                         <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
                             <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
                         </a>
+                        <span class="year">Année: <span class="promotion-year">2018</span></span>
                     <div class="promotion-card-content">
                         <div>
                             <h2>{{ promotion.nom }}</h2>
@@ -73,6 +76,7 @@
                         <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
                             <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
                         </a>
+                        <span class="year">Année: <span class="promotion-year">2019</span></span>
                     <div class="promotion-card-content">
                         <div>
                             <h2>{{ promotion.nom }}</h2>
@@ -86,4 +90,8 @@
             {% endfor %}
         </ul>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/tri.js') }}"></script>
 {% endblock %}
