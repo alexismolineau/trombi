@@ -54,9 +54,15 @@ class Promotion
      */
     private $Student;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Links::class, mappedBy="promotion")
+     */
+    private $links;
+
     public function __construct()
     {
         $this->Student = new ArrayCollection();
+        $this->links = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,6 +162,36 @@ class Promotion
     public function removeStudent(Student $student): self
     {
         $this->Student->removeElement($student);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Links[]
+     */
+    public function getLinks(): Collection
+    {
+        return $this->links;
+    }
+
+    public function addLink(Links $link): self
+    {
+        if (!$this->links->contains($link)) {
+            $this->links[] = $link;
+            $link->setPromotion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLink(Links $link): self
+    {
+        if ($this->links->removeElement($link)) {
+            // set the owning side to null (unless already changed)
+            if ($link->getPromotion() === $this) {
+                $link->setPromotion(null);
+            }
+        }
 
         return $this;
     }

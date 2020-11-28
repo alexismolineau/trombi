@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PromotionController!{% endblock %}
+{% block title %}Trombinoscope du CEFIM{% endblock %}
 
 {% block body %}
 
@@ -8,7 +8,7 @@
     <h2> Liste des promotions </h2>
     <ul>
         {% for promotion in promotions %}
-        <li><a href="{{ path("students_list", {'id': promotion.id}) }}">{{promotion.nom}}</a></li>
+        <li><a href="{{ path("students_list", {'promotion': promotion.id}) }}">{{promotion.nom}}</a></li>
         {% endfor %}
     </ul>
 </div>

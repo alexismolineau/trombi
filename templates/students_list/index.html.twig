@@ -2,7 +2,20 @@
 
 {% block title %}Trombinoscope DWWM-2{% endblock %}
 
+
+{% block h1 %}<h1>Les trombines de {{promotion.nom}}</h1>{% endblock %}
+
 {% block body %}
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="{{ path("promotion") }}" >
+                <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
     <div class="container top-filter">
         <div class="search-container">
         ceci est une barre de recherche
@@ -22,7 +35,7 @@
             <div class="card">
                 <img src="{{ asset('assets/img/students/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{ student.nom }}">
                 <h2><a href="">{{student.prenom}} {{student.nom}}</a></h2>
-                <a href="{{ path("student", {'id': student.id}) }}" class="button"><span>En savoir +</span></a>
+                <a href="{{ path("student", {'promotion': promotion.id,'id': student.id}) }}" class="button"><span>En savoir +</span></a>
             </div>
         </div>
         {% endfor %}

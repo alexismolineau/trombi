@@ -183,12 +183,13 @@ a:visited {
 
 .breadcrumb{
     text-align: left;
-    margin-top: -2em;
+    margin-top: -3em;
     margin-bottom: 1em;
-    padding-left: 1.5rem;
+    padding: 1em 0;
+    background-color: rgb(255, 243, 225);
 }
 
-.breadcrumb > a{
+.breadcrumb > .container > a{
     color: grey;
 }
 
@@ -252,16 +253,10 @@ footer {
 }
 
 .footer-links {
-    margin-left: 1.5em;
-    margin-right: .5em;
     border-right: 1px solid #fff;
+    padding: 0 1.5em;
 }
 
-.courses-list{
-    margin-left: .5em;
-    margin-right: 1.5em;
-    border-right: 1px solid #fff;
-}
 
 .link-list-items, .courses-list-items {
     margin-bottom: 0.5em;

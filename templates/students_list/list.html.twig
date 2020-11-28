@@ -2,13 +2,21 @@
 
 {% block title %}{{student.prenom}} {{student.nom}}{% endblock %}
 
+{% block h1 %}<h1>{{student.prenom}} {{student.nom}} • {{promotion.nom}}</h1>{% endblock %}
+
 {% block body %}
 
-    <div class="breadcrumb container">
-        <a href="{{ url('students_list') }}">
-            <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
-            Retour à l'accueil
-        </a>
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="{{ path("promotion") }}" >
+                <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+                Accueil
+            </a>
+            <span>/</span>
+            <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
+                {{promotion.nom}}
+            </a>
+        </div>
     </div>
 
     <main class="container">
