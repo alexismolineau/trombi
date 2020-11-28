@@ -44,6 +44,11 @@ class Promotion
      */
     private $links;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $year;
+
     public function __construct()
     {
         $this->Student = new ArrayCollection();
@@ -141,6 +146,18 @@ class Promotion
                 $link->setPromotion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): self
+    {
+        $this->year = $year;
 
         return $this;
     }

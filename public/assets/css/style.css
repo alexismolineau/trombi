@@ -169,22 +169,66 @@ a:visited {
 
 .promotion-list{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2em;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .promotion-card{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
     padding: 0.8em;
     box-shadow: 0.2em 0.2em .5em 0px #9a9292;
     border-radius: 0.3em;
+}
+
+.promotion-card > a {
+    margin: auto 0;
+}
+
+.promotion-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+
+.promotion-card-content > div > h2 {
+    color: #fd7e37;
+    padding-top: 0;
+}
+
+.promotion-btn {
+    background-color: #fd7e37;
+    font-weight: bold;
+    padding: 1em 2em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em 1em;
+    border-radius: 1.5em;
+    text-decoration: none;
 }
 
 .profile-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40rem, 2fr));
     grid-gap: 3rem;
-    margin-bottom: 3em;
+}
+
+@media screen and (max-width: 28em) {
+    .promotion-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 53em) {
+    .promotion-card {
+        grid-template-columns: 1fr;
+    }
 }
 
 .infos{

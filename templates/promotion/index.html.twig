@@ -4,34 +4,86 @@
 
 {% block body %}
 
-<div class="container">
-    <ul class="promotion-list">
-        {% for promotion in promotions %}
-            <li class="promotion-card">
-                <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
-                    <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
-                </a>
-                <div class="promotion-card-content">
-                    <h2>{{ promotion.nom }}</h2>
-                    <p>{{promotion.description}}</p>
-                </div>
-            </li>
-            <li class="promotion-card">
-                <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
-                    <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
-                </a>
-            </li>
-            <li class="promotion-card">
-                <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
-                    <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
-                </a>
-            </li>
-            <li class="promotion-card">
-                <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
-                    <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="breadcrumb">
+        <div class="container">
+            <img src="{{asset('assets/img/home.svg')}}" alt="accueil" class="icon">
+        </div>
+    </div>
+
+    <div class="container top-filter">
+        <div class="search-container">
+        ceci est une barre de recherche
+        </div>
+        <div class="filter-container">
+            <button class="filtre" onclick="triAZ()">
+                <img src="{{ asset('assets/img/sortAZ.svg') }}" alt="tri par ordre alphabetique">
+            </button>
+            <button class="filtre" onclick="triZA()">
+                <img src="{{ asset('assets/img/sortZA.svg') }}" alt="tri par ordre anti-alphabetique">
+            </button>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <ul class="promotion-list">
+            {% for promotion in promotions %}
+                <li class="promotion-card">
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
+                            <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
+                        </a>
+                    <div class="promotion-card-content">
+                        <div>
+                            <h2>{{ promotion.nom }}</h2>
+                            <p>{{promotion.description}}</p>
+                        </div>
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}" class="promotion-btn">
+                            En savoir +
+                        </a>
+                    </div>
+                </li>
+                <li class="promotion-card">
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
+                            <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
+                        </a>
+                    <div class="promotion-card-content">
+                        <div>
+                            <h2>{{ promotion.nom }}</h2>
+                            <p>{{promotion.description}}</p>
+                        </div>
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}" class="promotion-btn">
+                            En savoir +
+                        </a>
+                    </div>
+                </li>
+                <li class="promotion-card">
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
+                            <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
+                        </a>
+                    <div class="promotion-card-content">
+                        <div>
+                            <h2>{{ promotion.nom }}</h2>
+                            <p>{{promotion.description}}</p>
+                        </div>
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}" class="promotion-btn">
+                            En savoir +
+                        </a>
+                    </div>
+                </li>
+                <li class="promotion-card">
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
+                            <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
+                        </a>
+                    <div class="promotion-card-content">
+                        <div>
+                            <h2>{{ promotion.nom }}</h2>
+                            <p>{{promotion.description}}</p>
+                        </div>
+                        <a href="{{ path("students_list", {'promotion': promotion.id}) }}" class="promotion-btn">
+                            En savoir +
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
