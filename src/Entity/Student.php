@@ -115,7 +115,7 @@ class Student
     private $teacher;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Promotion::class, mappedBy="Student")
+     * @ORM\ManyToMany(targetEntity=Promotion::class, mappedBy="Student", fetch="EAGER")
      */
     private $promotions;
 

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche avancée{% endblock %}
+
+{% block h1 %}<h1>Recherche Avancée</h1>{% endblock %}
+
+{% block body %}
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="{{ path("promotion") }}" >
+                <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
+
+    {{ form_start(studentSearchForm, {'attr': {'class': 'row'}}) }}
+        {{ form_label(studentSearchForm.prenom) }}
+        {{ form_widget(studentSearchForm.prenom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
+        {{ form_errors(studentSearchForm.prenom) }}
+        {{ form_label(studentSearchForm.nom) }}
+        {{ form_widget(studentSearchForm.nom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
+        {{ form_errors(studentSearchForm.nom) }}
+        <input type="submit" name="" value="Rechercher" class="btn btn-primary">
+    {{ form_end(studentSearchForm) }}
+
+
+    <div>
+        <h2>Résultats</h2>
+
+        <ul class="main-content container">
+        {% if not results is empty %}
+            {% for result in results %}
+            <li class="card-container home-card">
+                <div class="card">
+                    <img src="{{ asset('assets/img/students/' ~ result.imgSrc) }}" alt="{{result.prenom}} {{ result.nom }}">
+                    <h2><a href="{{ path("student", {'promotion': result.promotions[0].id,'id': result.id}) }}">{{result.prenom}} {{result.nom}}</a></h2>
+                    <a href="{{ path("student", {'promotion': result.promotions[0].id,'id': result.id}) }}" class="button"><span>En savoir +</span></a>
+                </div>
+            </li>
+            {% endfor %}
+        {% else %}
+            <li>Aucun résultat retourné par la recherche</li>
+        {% endif %}
+        </ul>
+
+
+    </div>
+
+{% endblock %}

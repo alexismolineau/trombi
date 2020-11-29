@@ -12,9 +12,10 @@
 
     <div class="container top-filter">
         <div class="search-container">
-        <form>
-            <input type="text" placeholder="Filtrer par nom" class="js-search-bar" oninput="inputPromotionName()">
-        </form>
+            <form>
+                <input type="text" placeholder="Filtrer par nom" class="js-search-bar" oninput="inputPromotionName()">
+            </form>
+            <a href="{{ path("recherche")}}" class="advanced-search">Recherche avancée</a>
         </div>
         <div class="filter-container">
             <button class="filtre" onclick="tri19()">

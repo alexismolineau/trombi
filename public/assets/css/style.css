@@ -158,6 +158,20 @@ a:visited {
     width: 2rem;
 }
 
+.search-container{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.advanced-search{
+    color: #076ff1;
+}
+
+.advanced-search:visited{
+    color: #076ff1;
+}
+
 /*content*/
 .main-content{
     display: grid;

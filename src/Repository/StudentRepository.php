@@ -21,7 +21,7 @@ class StudentRepository extends ServiceEntityRepository
 
 
     public function search($prenom, $nom) {
-        return $this->createQueryBuilder('Prenom')
+        return $this->createQueryBuilder('Student')
             ->andWhere('Student.prenom LIKE :prenom')
             ->andWhere('Student.nom LIKE :nom')
             ->setParameter('prenom', '%'.$prenom.'%')
