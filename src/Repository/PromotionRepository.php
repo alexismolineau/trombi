@@ -19,6 +19,15 @@ class PromotionRepository extends ServiceEntityRepository
         parent::__construct($registry, Promotion::class);
     }
 
+    public function search($nom) {
+        return $this->createQueryBuilder('Promotion')
+            ->andWhere('Promotion.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->execute();
+    }
+
+
     // /**
     //  * @return Promotion[] Returns an array of Promotion objects
     //  */

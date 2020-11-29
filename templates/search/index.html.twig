@@ -15,15 +15,31 @@
         </div>
     </div>
 
-
-    {{ form_start(studentSearchForm, {'attr': {'class': 'row'}}) }}
-        {{ form_label(studentSearchForm.prenom) }}
-        {{ form_widget(studentSearchForm.prenom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
-        {{ form_errors(studentSearchForm.prenom) }}
-        {{ form_label(studentSearchForm.nom) }}
-        {{ form_widget(studentSearchForm.nom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
-        {{ form_errors(studentSearchForm.nom) }}
-        <input type="submit" name="" value="Rechercher" class="btn btn-primary">
-    {{ form_end(studentSearchForm) }}
+    <div class="container">
+        <div class="search-form-container">
+            <div class="search-form">
+                <h2>Recherche par étudiant</h2>
+                {{ form_start(studentSearchForm, {'attr': {'class': 'row'}}) }}
+                    {{ form_widget(studentSearchForm.prenom, {'attr': {'placeholder': 'Prénom'}}) }}
+                    {{ form_errors(studentSearchForm.prenom) }}
+                    {{ form_widget(studentSearchForm.nom, {'attr': {'placeholder': 'Nom'}}) }}
+                    {{ form_errors(studentSearchForm.nom) }}
+                    <div class="search-button-container">
+                        <button type="submit" class="button-search-form">Rechercher</button>
+                    </div>
+                {{ form_end(studentSearchForm) }}
+            </div>
+            <div class="search-form">
+                <h2>Recherche par promotion</h2>
+                {{ form_start(promotionSearchForm, {'attr': {'class': 'row'}}) }}
+                    {{ form_widget(promotionSearchForm.nom, {'attr': {'placeholder': 'Nom de la promotion'}}) }}
+                    {{ form_errors(promotionSearchForm.nom) }}
+                    <div class="search-button-container">
+                        <button type="submit" class="button-search-form">Rechercher</button>
+                    </div>
+                {{ form_end(promotionSearchForm) }}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

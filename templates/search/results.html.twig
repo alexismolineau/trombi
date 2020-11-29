@@ -16,35 +16,81 @@
     </div>
 
 
-    {{ form_start(studentSearchForm, {'attr': {'class': 'row'}}) }}
-        {{ form_label(studentSearchForm.prenom) }}
-        {{ form_widget(studentSearchForm.prenom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
-        {{ form_errors(studentSearchForm.prenom) }}
-        {{ form_label(studentSearchForm.nom) }}
-        {{ form_widget(studentSearchForm.nom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
-        {{ form_errors(studentSearchForm.nom) }}
-        <input type="submit" name="" value="Rechercher" class="btn btn-primary">
-    {{ form_end(studentSearchForm) }}
+    <div class="background-search-form">
+        <div class="search-form-container container">
+            <div class="search-form">
+                <h2>Recherche par étudiant</h2>
+                {{ form_start(studentSearchForm, {'attr': {'class': 'row'}}) }}
+                    {{ form_widget(studentSearchForm.prenom, {'attr': {'placeholder': 'Prénom'}}) }}
+                    {{ form_errors(studentSearchForm.prenom) }}
+                    {{ form_widget(studentSearchForm.nom, {'attr': {'placeholder': 'Nom'}}) }}
+                    {{ form_errors(studentSearchForm.nom) }}
+                    <div class="search-button-container">
+                        <button type="submit" class="button-search-form">Rechercher</button>
+                    </div>
+                {{ form_end(studentSearchForm) }}
+            </div>
+            <div class="search-form">
+                <h2>Recherche par promotion</h2>
+                {{ form_start(promotionSearchForm, {'attr': {'class': 'row'}}) }}
+                    {{ form_widget(promotionSearchForm.nom, {'attr': {'placeholder': 'Nom de la promotion'}}) }}
+                    {{ form_errors(promotionSearchForm.nom) }}
+                    <div class="search-button-container">
+                        <button type="submit" class="button-search-form">Rechercher</button>
+                    </div>
+                {{ form_end(promotionSearchForm) }}
+            </div>
+        </div>
+    </div>
 
 
     <div>
-        <h2>Résultats</h2>
 
-        <ul class="main-content container">
-        {% if not results is empty %}
+        <h2 class="result-title">Résultats</h2>
+        
+        {% if results|default  %}
+        <main class="main-content container">
             {% for result in results %}
-            <li class="card-container home-card">
-                <div class="card">
-                    <img src="{{ asset('assets/img/students/' ~ result.imgSrc) }}" alt="{{result.prenom}} {{ result.nom }}">
-                    <h2><a href="{{ path("student", {'promotion': result.promotions[0].id,'id': result.id}) }}">{{result.prenom}} {{result.nom}}</a></h2>
-                    <a href="{{ path("student", {'promotion': result.promotions[0].id,'id': result.id}) }}" class="button"><span>En savoir +</span></a>
+                {% if not result.promotions is empty%}
+                <div class="card-container home-card">
+                    <div class="card">
+                        <img src="{{ asset('assets/img/students/' ~ result.imgSrc) }}" alt="{{result.prenom}} {{ result.nom }}">
+                        <h2><a href="{{ path("student", {'promotion': result.promotions[0].id,'id': result.id}) }}">{{result.prenom}} {{result.nom}}</a></h2>
+                        <a href="{{ path("student", {'promotion': result.promotions[0].id,'id': result.id}) }}" class="button"><span>En savoir +</span></a>
+                    </div>
                 </div>
-            </li>
+                {% endif %}
             {% endfor %}
-        {% else %}
-            <li>Aucun résultat retourné par la recherche</li>
+        {% elseif not resultsPromo|default and not results|default %}
+            <div>Aucun résultat retourné par la recherche</div>
+        </main>
         {% endif %}
-        </ul>
+
+        {% if resultsPromo|default  %}
+        <main class="main-content container">
+                <ul class="promotion-list">
+            {% for result in resultsPromo %}
+                    <li class="promotion-card">
+                            <a href="{{ path("students_list", {'promotion': result.id}) }}">
+                                <img src="{{ asset('assets/img/promotions/' ~ result.groupPicture) }}" alt="{{result.nom}}">
+                            </a>
+                            <span class="year">Année: <span class="promotion-year">{{result.year}}</span></span>
+                        <div class="promotion-card-content">
+                            <div>
+                                <h2>{{ result.nom }}</h2>
+                                <p>{{result.description}}</p>
+                            </div>
+                            <a href="{{ path("students_list", {'promotion': result.id}) }}" class="promotion-btn">
+                                En savoir +
+                            </a>
+                        </div>
+                    </li>
+            {% endfor %}
+            </ul>
+        {% elseif not resultsPromo|default and not results|default %}
+            <div>Aucun résultat retourné par la recherche</div>
+        </main>
+        {% endif %}
 
 
     </div>
