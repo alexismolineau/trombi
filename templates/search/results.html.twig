@@ -61,8 +61,6 @@
                 </div>
                 {% endif %}
             {% endfor %}
-        {% elseif not resultsPromo|default and not results|default %}
-            <div>Aucun résultat retourné par la recherche</div>
         </main>
         {% endif %}
 
@@ -87,10 +85,15 @@
                     </li>
             {% endfor %}
             </ul>
-        {% elseif not resultsPromo|default and not results|default %}
-            <div>Aucun résultat retourné par la recherche</div>
         </main>
         {% endif %}
+
+        {% if not resultsPromo|default and not results|default %}
+        <main class="main-content container">
+            <div>Aucun résultat retourné par la recherche</div>
+        </main>
+        {% endif %}   
+
 
 
     </div>
