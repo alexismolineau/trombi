@@ -19,6 +19,16 @@ class StudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Student::class);
     }
 
+
+    public function search($prenom, $nom) {
+        return $this->createQueryBuilder('Prenom')
+            ->andWhere('Student.prenom LIKE :prenom')
+            ->andWhere('Student.nom LIKE :nom')
+            ->setParameter('prenom', '%'.$prenom.'%')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->execute();
+    }
     // /**
     //  * @return Student[] Returns an array of Student objects
     //  */

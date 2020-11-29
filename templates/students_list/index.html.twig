@@ -18,7 +18,9 @@
 
     <div class="container top-filter">
         <div class="search-container">
-        ceci est une barre de recherche
+        <form>
+            <input type="text" placeholder="Filtrer par nom" class="js-search-bar" oninput="inputName()">
+        </form>
         </div>
         <div class="filter-container">
             <button class="filtre" onclick="triAZ()">
@@ -80,4 +82,5 @@
 
 {% block javascripts %}
 <script src="{{ asset('assets/js/tri.js') }}"></script>
+<script src="{{ asset('assets/js/filter.js') }}"></script>
 {% endblock %}

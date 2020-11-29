@@ -12,7 +12,9 @@
 
     <div class="container top-filter">
         <div class="search-container">
-        ceci est une barre de recherche
+        <form>
+            <input type="text" placeholder="Filtrer par nom" class="js-search-bar" oninput="inputPromotionName()">
+        </form>
         </div>
         <div class="filter-container">
             <button class="filtre" onclick="tri19()">
@@ -49,7 +51,7 @@
                         <span class="year">Année: <span class="promotion-year">2017</span></span>
                     <div class="promotion-card-content">
                         <div>
-                            <h2>{{ promotion.nom }}</h2>
+                            <h2>dmg</h2>
                             <p>{{promotion.description}}</p>
                         </div>
                         <a href="{{ path("students_list", {'promotion': promotion.id}) }}" class="promotion-btn">
@@ -64,7 +66,7 @@
                         <span class="year">Année: <span class="promotion-year">2018</span></span>
                     <div class="promotion-card-content">
                         <div>
-                            <h2>{{ promotion.nom }}</h2>
+                            <h2>dmh</h2>
                             <p>{{promotion.description}}</p>
                         </div>
                         <a href="{{ path("students_list", {'promotion': promotion.id}) }}" class="promotion-btn">
@@ -94,4 +96,5 @@
 
 {% block javascripts %}
 <script src="{{ asset('assets/js/tri.js') }}"></script>
+<script src="{{ asset('assets/js/filter.js') }}"></script>
 {% endblock %}

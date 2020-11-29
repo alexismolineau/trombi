@@ -1,0 +1,8 @@
+{{ form_start(searchForm, {'action': path('promotion')}) }}
+        {{ form_widget(searchForm.prenom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
+        {{ form_widget(searchForm.nom, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
+        {{ form_widget(searchForm.promotion, {'value' : id}) }}
+
+        <input type="submit" name="" value="Enregistrer" class="btn btn-primary">
+{{ form_end(searchForm) }}
+
