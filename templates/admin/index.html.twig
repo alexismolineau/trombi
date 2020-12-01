@@ -1,16 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Interface administrateur{% endblock %}
+
+{% block h1 %}<h1>Interface administrateur</h1>{% endblock %}
+
 
 {% block body %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/alexis/Projets/trombi/trombi/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/alexis/Projets/trombi/trombi/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
+<div class="breadcrumb">
+    <div class="container">
+            <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+            Panneau d'administration
+    </div>
 </div>
+
+<main class="main-content container">
+        <div class="card">
+            <h2>Accès aux promotions</h2>
+            <a href="{{ path("admin_list_promotions") }}" class="promotion-btn">Accéder</a>
+        </div>
+        <div class="card">
+            <h2>Accès aux étudiants</h2>
+            <a href="{{ path("admin_list_students") }}" class="promotion-btn">Accéder</a>
+        </div>
+        <div class="card">
+            <h2>Accès aux liens footer</h2>
+            <a href="" class="promotion-btn">Accéder</a>
+        </div>
+</main>
 {% endblock %}

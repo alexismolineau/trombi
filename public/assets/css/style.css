@@ -412,3 +412,53 @@ footer {
     display: inline;
     max-width: 1em;
 }
+
+/* back-office*/
+
+.bo-options {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bo-options-button {
+    background-color: #0066ff;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+
+.table-content {
+    margin-bottom: 2em;
+}
+
+.back-office-table {
+    width: 100%;
+    overflow: scroll;
+}
+
+thead.back-office-table-header{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+tr.back-office-row td {
+    font-weight: bold;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+tr.back-office-row:nth-child(2n + 1) {
+    background-color:rgb(255, 243, 225);
+}
+
+/*tr.back-office-row:nth-child(2n + 1) {
+    color: #fff;
+    background-color:#c3a9789c;
+}*/
+
+.mod-link, .mod-link:visited, .mod-link:link{
+    color: #0066ff;
+}
+
+.del-link, .del-link:visited, .del-link:link {
+    color: #ff4556;
+}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interface administrateur{% endblock %}
+
+{% block h1 %}<h1>Interface administrateur</h1>{% endblock %}
+
+
+{% block body %}
+
+<div class="breadcrumb">
+    <div class="container">
+        <a href="{{ path("admin") }}" >
+            <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+            Retour au panneau d'administration
+        </a>
+    </div>
+</div>
+
+
+<h2>Etudiants</h2>
+<div class="container top-filter">
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Filtrer par nom" class="js-search-bar" oninput="inputName()">
+        </form>
+    </div>
+</div>
+<main class="table-content container">
+    <div class="bo-options">
+        <a href="{{ path("admin_add_student")}}" class="bo-options-button">
+            Ajouter un étudiant
+        </a>
+    </div>
+    <table class="back-office-table">
+        <thead class="back-office-table-header">
+            <tr>
+                <td>Id</td>
+                <td>Prénom</td>
+                <td>Nom</td>
+                <td>Promotions</td>
+                <td>Statut</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr class="back-office-row">
+                <td>{{ student.id }}</td>
+                <td>{{ student.prenom }}</td>
+                <td>{{ student.nom}}</td>
+                <td>
+                {% if student.promotions|default %}
+                    {% for promotions in student.promotions %}
+                            <a class="slack-link" href="{{ path("admin_show_promotion", {'id': promotions.id}) }}">{{ promotions.nom }}</a>
+                    {% endfor %}
+                {% else %}
+                    -    
+                {% endif %}
+                </td>
+                <td>
+                {% if student.student|default and student.student %}
+                    étudiant
+                {% elseif student.teacher|default and student.teacher %}
+                    enseignant
+                {% else %}
+                    -
+                {% endif %}
+                </td>
+                <td>
+                    <a class="mod-link" href="{{ path("admin_show_student", {'id': student.id})}}">Afficher</a>
+                </td>
+                <td><a class="mod-link" href="{{ path("admin_mod_student", {'id': student.id})}}">Modifier</a></td>
+                <td><a class="del-link" href="{{ path("admin_del_student", {'id': student.id})}}">Supprimer</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/filterAdmin.js') }}"></script>
+{% endblock %}

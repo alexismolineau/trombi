@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interface administrateur{% endblock %}
+
+{% block h1 %}<h1>Interface administrateur</h1>{% endblock %}
+
+
+{% block body %}
+
+
+<div class="breadcrumb">
+    <div class="container">
+        <a href="{{ path("admin") }}" >
+            <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+            Retour au panneau d'administration
+        </a>
+    </div>
+</div>
+
+
+<h2>Promotions</h2>
+<div class="container top-filter">
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Filtrer par nom" class="js-search-bar" oninput="inputPromotionName()">
+        </form>
+    </div>
+</div>
+<main class="table-content container">
+    <div class="bo-options">
+        <a href="{{ path("admin_add_promotion")}}" class="bo-options-button">
+            Ajouter une promotion
+        </a>
+    </div>
+    <table class="back-office-table">
+        <thead class="back-office-table-header">
+            <tr>
+                <td>Id</td>
+                <td>Nom</td>
+                <td>Description</td>
+                <td>Année</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for promotion in promotions %}
+            <tr class="back-office-row">
+                <td>{{ promotion.id }}</td>
+                <td>{{ promotion.nom }}</td>
+                <td>{{ promotion.description}}</td>
+                <td>{{ promotion.year}}</td>
+                <td>
+                    <a class="mod-link" href="{{ path("admin_show_promotion", {'id': promotion.id})}}">Afficher</a>
+                </td>
+                <td><a class="mod-link" href="{{ path("admin_mod_promotion", {'id': promotion.id})}}">Modifier</a></td>
+                <td><a class="del-link" href="{{ path("admin_del_promotion", {'id': promotion.id})}}">Supprimer</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/filterAdmin.js') }}"></script>
+{% endblock %}

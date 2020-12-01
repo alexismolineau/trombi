@@ -23,7 +23,6 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'promotions' => $promotions,
             'students' => $students,
-
         ]);
     }
 
@@ -34,7 +33,7 @@ class AdminController extends AbstractController
     {
         $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
 
-        return $this->render('listPromotions.html.twig', [
+        return $this->render('admin/promotion/listPromotions.html.twig', [
             'promotions' => $promotions,
         ]);
     }
@@ -46,7 +45,7 @@ class AdminController extends AbstractController
     {
         $promotion = $this->getDoctrine()->getRepository(Promiton::class)->findOneBy(['id' => $id]);
 
-        return $this->render('showPromotion.html.twig', [
+        return $this->render('admin/promotion/showPromotion.html.twig', [
             'promotion' => $promotion,
         ]);
     }
@@ -62,7 +61,7 @@ class AdminController extends AbstractController
         $form = '';
 
 
-        return $this->render('addPromotion.html.twig', [
+        return $this->render('admin/promotion/addPromotion.html.twig', [
             //'addPromotionForm' => $form->createView()
         ]);
     }
@@ -78,7 +77,7 @@ class AdminController extends AbstractController
         //TODO form mod promotion
         $form = '';
 
-        return $this->render('modPromotion.html.twig', [
+        return $this->render('admin/promotion/modPromotion.html.twig', [
             //'modPromotionForm' => $form->createView(),
             'promotion' => $promotion,
         ]);
@@ -93,7 +92,7 @@ class AdminController extends AbstractController
         //TODO form delete promotion``
         $form = '';
 
-        return $this->render('delPromotion.html.twig', [
+        return $this->render('admin/promotion/delPromotion.html.twig', [
             //'delPromotionForm' => $form->createView(),
             'promotion' => $promotion,
         ]);
@@ -107,7 +106,7 @@ class AdminController extends AbstractController
     {
         $students = $this->getDoctrine()->getRepository(Student::class)->findAll();
 
-        return $this->render('listStudents.html.twig', [
+        return $this->render('admin/student/listStudents.html.twig', [
             'students' => $students,
         ]);
     }
@@ -119,7 +118,7 @@ class AdminController extends AbstractController
     {
         $student = $this->getDoctrine()->getRepository(Student::class)->findOneBy(['id' => $id]);
 
-        return $this->render('showStudent.hmtl.twig', [
+        return $this->render('admin/student/showStudent.hmtl.twig', [
             'student' => $student,
         ]);
     }
@@ -134,12 +133,12 @@ class AdminController extends AbstractController
         //TODO form add student
         $form = '';
 
-        return $this->render('addStudent.html.twig', [
+        return $this->render('admin/student/addStudent.html.twig', [
             //'addStudentForm' => $form->createView(),
         ]);
     }
     /**
-     * @Route("/admin/students/mod/{id}", name="admin_show_student")
+     * @Route("/admin/students/mod/{id}", name="admin_mod_student")
      */
     public function modSudent($id) :Response
     {
@@ -147,19 +146,22 @@ class AdminController extends AbstractController
         // TODO student mod form
         $form = '';
 
-        return $this->render('modStudent.html.twig', [
+        return $this->render('admin/student/modStudent.html.twig', [
             'student' => $student,
             //'modStudentForm' => $form->createview(),
         ]);
     }
 
+    /**
+     * @Route("/admin/students/del/{id}", name="admin_del_student")
+     */
     public function delStudent($id) :Response
     {
         $student = $this->getDoctrine()->getRepository(Student::class)->findOneBy(['id'=>$id]);
         //TODO student delete form
         $form = '';
 
-        return $this->render('delStudent.html.twig', [
+        return $this->render('admin/student/delStudent.html.twig', [
             'student' => $student,
             //'delStudentForm' => $form->createView(),
         ]);
