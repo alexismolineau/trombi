@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Promotion;
 use App\Entity\Student;
+use App\Form\StudentType;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class AdminController extends AbstractController
 {
@@ -118,37 +121,107 @@ class AdminController extends AbstractController
     {
         $student = $this->getDoctrine()->getRepository(Student::class)->findOneBy(['id' => $id]);
 
-        return $this->render('admin/student/showStudent.hmtl.twig', [
+        return $this->render('admin/student/showStudent.html.twig', [
             'student' => $student,
         ]);
     }
 
     /**
-     * @Route("/admin/students/add", name="admin_add_student")
+     * @Route("/admin/student/add", name="admin_add_student")
      */
-    public function addStudent() :Response
+    public function addStudent(Request $request) :Response
     {
         $student = new Student;
+        
+        $form = $this->createForm(StudentType::class, $student);
 
-        //TODO form add student
-        $form = '';
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            if($form->get('student')->getData() === 'student'){
+                $student->setStudent(true);
+                $student->setTeacher(false);
+            }
+            else {
+                $student->setStudent(false);
+                $student->setTeacher(true);
+            }
+
+            if ($student->getImgSrc() !== null) {
+                $file = $form->get('imgSrc')->getData();
+                $fileName =  uniqid(). '.' .$file->guessExtension();
+
+                try {
+                    $file->move(
+                        $this->getParameter('students_images_directory'), // Le dossier dans le quel le fichier va etre chargé
+                        $fileName
+                    );
+                } catch (FileException $e) {
+                    return new Response($e->getMessage());
+                }
+
+                $student->setImgSrc($fileName);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($student);
+            $em->flush();
+
+            $response = $this->forward('App\Controller\AdminController::showStudent', [
+                'id' => $student->getId(),
+            ]);
+            
+            return $response;
+        }
 
         return $this->render('admin/student/addStudent.html.twig', [
-            //'addStudentForm' => $form->createView(),
+            'addStudentForm' => $form->createView(),
         ]);
     }
     /**
      * @Route("/admin/students/mod/{id}", name="admin_mod_student")
      */
-    public function modSudent($id) :Response
+    public function modSudent(Student $student, Request $request) :Response
     {
-        $student = $this->getDoctrine()->getRepository(Student::class)->findOneBy(['id'=>$id]);
-        // TODO student mod form
-        $form = '';
+        $oldPicture = $student->getImgSrc();
+
+        $form = $this->createForm(StudentType::class, $student);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($student->getImgSrc() !== null && $student->getImgSrc() !== $oldPicture) {
+                $file = $form->get('imgSrc')->getData();
+                $fileName = uniqid(). '.' .$file->guessExtension();
+
+                try {
+                    $file->move(
+                        $this->getParameter('students_images_directory'),
+                        $fileName
+                    );
+                } catch (FileException $e) {
+                    return new Response($e->getMessage());
+                }
+
+                $student->setImgSrc($fileName);
+            } else {
+                $student->setImgSrc($oldPicture);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($student);
+            $em->flush();
+
+            $response = $this->forward('App\Controller\AdminController::showStudent', [
+                'id' => $student->getId(),
+            ]);
+            
+            return $response;
+        }
 
         return $this->render('admin/student/modStudent.html.twig', [
             'student' => $student,
-            //'modStudentForm' => $form->createview(),
+            'addStudentForm' => $form->createview(),
         ]);
     }
 

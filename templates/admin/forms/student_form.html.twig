@@ -1,0 +1,101 @@
+{{ form_start(addStudentForm) }}
+    <div class="form-container">
+        <div class="form-group">
+            <div class="form-input">
+                {{ form_label(addStudentForm.prenom,'Prénom') }}
+                {{ form_widget(addStudentForm.prenom, {'attr': {'placeholder': 'Prénom'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.nom, 'Nom') }}
+                {{ form_widget(addStudentForm.nom, {'attr': {'placeholder': 'Nom'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.age, 'Age') }}
+                {{ form_widget(addStudentForm.age, {'attr': {'placeholder': 'Age'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.company, 'Entreprise') }}
+                {{ form_widget(addStudentForm.company, {'attr': {'placeholder': 'Entreprise'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.slack, 'Id slack') }}
+                {{ form_widget(addStudentForm.slack, {'attr': {'placeholder': 'ID slack'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-input">
+                {% if student.imgSrc|default %}
+                    <img width="300" src="{{ asset('assets/img/students/' ~ student.imgSrc) }}" alt="student.nom student.prenom">
+                {% endif %}
+                {{ form_label(addStudentForm.imgSrc, 'Photo') }}
+                {{ form_widget(addStudentForm.imgSrc, {'attr': {'placeholder': 'photo'}}) }}
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="form-input">
+                {{ form_label(addStudentForm.mission, 'Mission') }}
+                {{ form_widget(addStudentForm.mission, {'attr': {'placeholder': 'Missions'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.background, 'Background') }}
+                {{ form_widget(addStudentForm.background, {'attr': {'placeholder': 'Background'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-input">
+                {{ form_label(addStudentForm.film, 'Film') }}
+                {{ form_widget(addStudentForm.film, {'attr': {'placeholder': 'film'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.serie, 'Série') }}
+                {{ form_widget(addStudentForm.serie, {'attr': {'placeholder': 'série'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.jv, 'Jeu vidéo') }}
+                {{ form_widget(addStudentForm.jv, {'attr': {'placeholder': 'jeu vidéo'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.hero, 'Héro/Héroïne') }}
+                {{ form_widget(addStudentForm.hero, {'attr': {'placeholder': 'Héro/Héroïne'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.livre, 'Livre') }}
+                {{ form_widget(addStudentForm.livre, {'attr': {'placeholder': 'livre'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.chanson, 'Chanson') }}
+                {{ form_widget(addStudentForm.chanson, {'attr': {'placeholder': 'chanson préférée'}}) }}
+            </div>
+                    <div class="form-input">
+                {{ form_label(addStudentForm.application, 'Application') }}
+                {{ form_widget(addStudentForm.application, {'attr': {'placeholder': 'application'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.site, 'Site web') }}
+                {{ form_widget(addStudentForm.site, {'attr': {'placeholder': 'site web'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(addStudentForm.langage, 'Langage de programmation') }}
+                {{ form_widget(addStudentForm.langage, {'attr': {'placeholder': 'langage de programmation'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-input">
+                {{ form_label(addStudentForm.student, 'Est-il étudiant ?') }}
+                {{ form_widget(addStudentForm.student, {'attr': {'name': 'statut'}}) }}
+            </div>
+            <div class="form-input form-entity-input">
+                {{ form_label(addStudentForm.promotions, 'Promotion(s)' )}}
+                {{ form_widget(addStudentForm.promotions, {'attr': {'placeholder': 'promotions', 'checked': true}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+
+        </div>
+        <div class="form-submit">
+            <button type="submit" class="form-input-submit">Enregistrer</button>
+        </div>
+    </div>
+
+{{ form_end(addStudentForm) }}

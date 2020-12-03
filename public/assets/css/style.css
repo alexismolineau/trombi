@@ -415,6 +415,13 @@ footer {
 
 /* back-office*/
 
+.bo-options-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
 .bo-options {
     display: flex;
     justify-content: flex-end;
@@ -422,6 +429,12 @@ footer {
 
 .bo-options-button {
     background-color: #0066ff;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+
+.bo-options-button-red {
+    background-color: #ff4556;
     padding: 0.5em 1em;
     border-radius: 0.5em;
 }
@@ -461,4 +474,55 @@ tr.back-office-row:nth-child(2n + 1) {
 
 .del-link, .del-link:visited, .del-link:link {
     color: #ff4556;
+}
+
+
+/* forms */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: none;
+}
+
+.form-input > input {
+    border: none;
+    border-bottom: 1px solid #666666;
+}
+
+
+.form-input > textarea {
+    width: 100%;
+}
+
+.form-entity-input > select {
+    width: 100%;
+}
+
+.form-submit {
+    margin: auto;
+}
+
+.form-input-submit {
+    font-size: 2rem;
+    color: #fff;
+    background-color: #fd7e37;
+    border: none;
+    border-radius: 2em;
+    padding: 1rem 2rem;
 }

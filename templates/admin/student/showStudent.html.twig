@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interface administrateur{% endblock %}
+
+{% block h1 %}<h1>Interface administrateur</h1>{% endblock %}
+
+
+{% block body %}
+
+<div class="breadcrumb">
+    <div class="container">
+        <a href="{{ path("admin") }}" >
+            <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+            Accueil administration
+        </a>
+        /
+        <a href="{{ path("admin_list_students") }}" >
+            Etudiants
+        </a>
+        /
+        <span>
+            {{ student.prenom }} {{ student.nom }}
+        </span>
+    </div>
+</div>
+
+
+    <main class="container">
+        <div class="bo-options-container">
+            <div class="bo-options">
+                <a href="{{ path("admin_mod_student", {'id': student.id})}}" class="bo-options-button">
+                    Modifier
+                </a>
+            </div>
+            <div class="bo-options">
+                <a href="{{ path("admin_del_student", {'id': student.id})}}" class="bo-options-button-red">
+                    Supprimer
+                </a>
+            </div>
+        </div>
+        <div class="profile-content ">
+            <div class="card-container">
+                <div class="card card-profile">
+                    <img src="{{ asset('assets/img/students/' ~ student.imgSrc) }}" alt="{{student.prenom}} {{student.nom}}">
+                    <h2>{{student.prenom}} {{student.nom}}</h2>
+                    <img src="{{ asset('assets/img/slack.svg') }}" alt="slack logo" class="icon">
+                    <a class="slack-link" href="slack://user?team=T0C02PAUW&id={{student.slack}}">Contacter sur Slack</a>
+                </div>
+            </div>
+            <div class="infos">
+                <div class="background card">
+                    <h2>Background</h2>
+                    <p>{{student.background}}</p>
+                </div>
+                <div class="entreprise card ">
+                    <h2>Entreprise</h2>
+                    <p>{{student.company}}</p>
+                </div>
+                <div class="missions card">
+                    <h2>Missions</h2>
+                    <p>{{student.mission}}</p>
+                </div>
+                <div class="portrait card">
+                    <h2>Portrait Chinois</h2>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Film</li>
+                        <li class="portrait-list-value">{{student.film}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Série</li>
+                        <li class="portrait-list-value">{{student.serie}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Jeu Vidéo</li>
+                        <li class="portrait-list-value">{{student.jv}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Héros/Héroïne</li>
+                        <li class="portrait-list-value">{{student.hero}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Livre</li>
+                        <li class="portrait-list-value">{{student.livre}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Chanson</li>
+                        <li class="portrait-list-value">{{student.chanson}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Application</li>
+                        <li class="portrait-list-value">{{student.application}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Site web</li>
+                        <li class="portrait-list-value">{{student.site}}</li>
+                    </ul>
+                    <ul class="portrait-list">
+                        <li class="portrait-list-label">Langage</li>
+                        <li class="portrait-list-value">{{student.langage}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="portrait card card-profile">
+            <h2>Promotions</h2>
+            {% if student.promotions|default %}
+                {% for promotions in student.promotions %}
+                        <a class="slack-link" href="{{ path("admin_show_promotion", {'id': promotions.id}) }}">{{ promotions.nom }}</a>
+                {% endfor %}
+            {% else %}
+                -    
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/filterAdmin.js') }}"></script>
+{% endblock %}
