@@ -231,13 +231,11 @@ class AdminController extends AbstractController
     public function delStudent($id) :Response
     {
         $student = $this->getDoctrine()->getRepository(Student::class)->findOneBy(['id'=>$id]);
-        //TODO student delete form
-        $form = '';
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($student);
+        $em->flush();
 
-        return $this->render('admin/student/delStudent.html.twig', [
-            'student' => $student,
-            //'delStudentForm' => $form->createView(),
-        ]);
+        return $this->redirect($this->generateUrl("admin_list_students"));
     }
 
 

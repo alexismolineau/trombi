@@ -41,3 +41,17 @@ function inputPromotionName(){
         tBody.appendChild(filteredArray[i]);
     }
 }
+
+// asking user to confirm deletion
+
+const deleteButtons = document.querySelectorAll('.del-link');
+
+deleteButtons.forEach(link => link.addEventListener('click', event => {
+    confirm('Voulez-vous supprimer cet étudiant ?') ? true : event.preventDefault();
+}))
+
+const onePageDeleteBtn = document.querySelector('.bo-options-button-red');
+
+onePageDeleteBtn.addEventListener('click', event => {
+    confirm('Voulez-vous supprimer cet étudiant ?') ? true: event.preventDefault();
+})
