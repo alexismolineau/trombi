@@ -53,6 +53,7 @@ class StudentType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'required' => false,
+                'by_reference' => false,
             ])
         ;
     }

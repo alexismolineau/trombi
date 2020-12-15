@@ -169,7 +169,7 @@ class AdminController extends AbstractController
     public function delPromotion($id) :Response
     {
         $promotion = $this->getDoctrine()->getRepository(Promotion::class)->findOneBy(['id' => $id]);
-        
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($promotion);
         $em->flush();
@@ -281,6 +281,15 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if($form->get('student')->getData() === 'student'){
+                $student->setStudent(true);
+                $student->setTeacher(false);
+            }
+            else {
+                $student->setStudent(false);
+                $student->setTeacher(true);
+            }
 
             if ($student->getImgSrc() !== null && $student->getImgSrc() !== $oldPicture) {
                 $file = $form->get('imgSrc')->getData();
