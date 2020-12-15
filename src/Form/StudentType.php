@@ -51,7 +51,7 @@ class StudentType extends AbstractType
                 'class' => Promotion::class,
                 'choice_label' => 'nom',
                 'multiple' => true,
-                'expanded' => true,
+                'expanded' => false,
                 'required' => false,
             ])
         ;

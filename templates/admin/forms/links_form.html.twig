@@ -1,0 +1,23 @@
+{{ form_start(linksForm) }}
+    <h2>Ajouter un lien </h2>
+    <div class="form-container">
+        <div class="form-group">
+            <div class="form-input">
+                {{ form_label(linksForm.name,'Nom du lien') }}
+                {{ form_widget(linksForm.name, {'attr': {'placeholder': 'Nom du lien'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(linksForm.href, 'Lien') }}
+                {{ form_widget(linksForm.href, {'attr': {'placeholder': 'Lien'}}) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(linksForm.type, 'Type') }}
+                {{ form_widget(linksForm.type, {'attr': {'placeholder': 'Type'}}) }}
+            </div>
+        </div>
+        <div class="form-submit">
+            <button type="submit" class="form-input-submit">Enregistrer</button>
+        </div>
+    </div>
+
+{{ form_end(linksForm) }}

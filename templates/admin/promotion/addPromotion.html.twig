@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interface administrateur{% endblock %}
+
+{% block h1 %}<h1>Interface administrateur</h1>{% endblock %}
+
+
+{% block body %}
+
+<div class="breadcrumb">
+    <div class="container">
+        <a href="{{ path("admin") }}" >
+            <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+            Accueil administration
+        </a>
+        /
+        <a href="{{ path("admin_list_promotions") }}" >
+            Promotions
+        </a>
+    </div>
+</div>
+
+    <h2>Ajouter une promotion</h2>
+    <main class="container">
+        {% include "admin/forms/promotion_form.html.twig" %}
+    </main>
+{% endblock %}
+

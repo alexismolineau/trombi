@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Interface administrateur{% endblock %}
+
+{% block h1 %}<h1>Interface administrateur</h1>{% endblock %}
+
+{% block body %}
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="{{ path("admin") }}" >
+                <img src="{{asset('assets/img/home.svg')}}" alt="retour à l'accueil" class="icon">
+                Accueil administration
+            </a>
+            /
+            <a href="{{ path("admin_list_promotions") }}" >
+                Promotions
+            </a>
+        </div>
+    </div>
+
+    <div class="bo-options-container container">
+        <div class="bo-options">
+            <a href="{{ path("admin_mod_promotion", {'id': promotion.id})}}" class="bo-options-button">
+                Modifier
+            </a>
+        </div>
+        <div class="bo-options">
+            <a href="{{ path("admin_del_promotion", {'id': promotion.id})}}" class="bo-options-button-red">
+                Supprimer
+            </a>
+        </div>
+    </div>
+    <div class="container main-content">
+        <ul class="">
+            <li class="promotion-card">
+                    <a href="{{ path("students_list", {'promotion': promotion.id}) }}">
+                        <img src="{{ asset('assets/img/promotions/' ~ promotion.groupPicture) }}" alt="{{promotion.nom}}">
+                    </a>
+                    <span class="year">Année: <span class="promotion-year">{{promotion.year}}</span></span>
+                <div class="promotion-card-content">
+                    <div>
+                        <h2>{{ promotion.nom }}</h2>
+                        <p>{{promotion.description}}</p>
+                    </div>
+                    <a href="{{ path("students_list", {'promotion': promotion.id}) }}" class="promotion-btn">
+                        Vue Front-Office
+                    </a>
+                </div
+            </li>
+        </ul>
+    </div>
+    <main class="table-content container">
+        <h2>Etudiants</h2>
+        <div class="bo-options">
+            <a href="{{ path("admin_add_student")}}" class="bo-options-button">
+                Ajouter un étudiant
+            </a>
+        </div>
+        <table class="back-office-table">
+            <thead class="back-office-table-header">
+                <tr>
+                    <td>Id</td>
+                    <td>Prénom</td>
+                    <td>Nom</td>
+                    <td>Promotions</td>
+                    <td>Statut</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% if students|default %}
+                {% for student in students %}
+                    <tr class="back-office-row">
+                        <td>{{ student.id }}</td>
+                        <td>{{ student.prenom }}</td>
+                        <td>{{ student.nom}}</td>
+                        <td>
+                        {% if student.promotions|default %}
+                            {% for promotions in student.promotions %}
+                                    <a class="slack-link" href="{{ path("admin_show_promotion", {'id': promotions.id}) }}">{{ promotions.nom }}</a>
+                            {% endfor %}
+                        {% else %}
+                            -    
+                        {% endif %}
+                        </td>
+                        <td>
+                        {% if student.student|default and student.student %}
+                            étudiant
+                        {% elseif student.teacher|default and student.teacher %}
+                            enseignant
+                        {% else %}
+                            -
+                        {% endif %}
+                        </td>
+                        <td>
+                            <a class="mod-link" href="{{ path("admin_show_student", {'id': student.id})}}">Afficher</a>
+                        </td>
+                        <td><a class="mod-link" href="{{ path("admin_mod_student", {'id': student.id})}}">Modifier</a></td>
+                        <td><a class="del-link" href="{{ path("admin_del_student", {'id': student.id})}}">Supprimer</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </main>
+    <div class="table-content container">
+        <h2>Liens Footer</h2>
+        <table class="back-office-table">
+            <thead class="back-office-table-header">
+                <tr>
+                    <td>Id</td>
+                    <td>Nom</td>
+                    <td>Lien</td>
+                    <td>Type</td>
+                    <td>-</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% if promotion.links|default %}
+                {% for link in promotion.links %}
+                    <tr class="back-office-row">
+                        <td>{{ link.id }}</td>
+                        <td>{{ link.name }}</td>
+                        <td>{{ link.href}}</td>
+                        <td>{{ link.type}}</td>
+                        <td><a class="del-link" href="{{ path("admin_del_link", {'id': link.id})}}">Supprimer</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+        {% include "admin/forms/links_form.html.twig" %}
+    </div>
+            
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/filterAdmin.js') }}"></script>
+{% endblock %}
