@@ -526,3 +526,7 @@ tr.back-office-row:nth-child(2n + 1) {
     border-radius: 2em;
     padding: 1rem 2rem;
 }
+
+.login-form-group {
+    justify-items:  center;
+}
